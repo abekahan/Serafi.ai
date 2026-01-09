@@ -3,10 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SeraphAi</title>
+  <title>SeraphAi - Crypto Mortgage Calculator</title>
   <link rel="stylesheet" href="LandingPage.css">
 </head>
 <body>
-  <!-- Full site content from canvas -->
+  <div class="landing-page">
+    <!-- Header -->
+    <div class="header">
+      <h1>🏦 SeraphAi Crypto Mortgage Calculator</h1>
+      <p>Calculate mortgage affordability using crypto asset depletion methodology</p>
+    </div>
+
+    <!-- Main Calculator Section -->
+    <div class="tool-list">
+      <div class="tool-card">
+        <h3>💰 Crypto Asset Depletion Calculator</h3>
+        <div class="tool-content">
+          <p style="color: #666; font-size: 14px; margin-bottom: 15px;">
+            This calculator uses the crypto asset depletion method: Your crypto value is reduced by 50% and divided by 84 months to determine qualifying monthly income for a mortgage.
+          </p>
+
+          <!-- Crypto Asset Input -->
+          <label for="cryptoValue" style="font-weight: bold; margin-top: 15px;">Total Crypto Asset Value ($)</label>
+          <input type="number" id="cryptoValue" placeholder="e.g., 100000" min="0" step="1000">
+
+          <!-- Additional Income -->
+          <label for="additionalIncome" style="font-weight: bold; margin-top: 15px;">Additional Monthly Income ($)</label>
+          <input type="number" id="additionalIncome" placeholder="e.g., 5000" min="0" step="100" value="0">
+
+          <!-- MSA Selection -->
+          <label for="msaSelect" style="font-weight: bold; margin-top: 15px;">Metropolitan Statistical Area (MSA)</label>
+          <select id="msaSelect" style="display: block; margin: 10px 0; padding: 8px; width: 100%; max-width: 500px; border-radius: 4px; border: 1px solid #ccc;">
+            <option value="">Select your MSA...</option>
+            <option value="high">High Cost Area (e.g., San Francisco, NYC, LA)</option>
+            <option value="medium">Medium Cost Area (e.g., Seattle, Boston, Miami)</option>
+            <option value="low">Low Cost Area (e.g., Phoenix, Dallas, Atlanta)</option>
+          </select>
+
+          <!-- Interest Rate -->
+          <label for="interestRate" style="font-weight: bold; margin-top: 15px;">Interest Rate (%)</label>
+          <input type="number" id="interestRate" placeholder="e.g., 7.5" min="0" max="20" step="0.1" value="7.5">
+
+          <!-- Loan Term -->
+          <label for="loanTerm" style="font-weight: bold; margin-top: 15px;">Loan Term (Years)</label>
+          <select id="loanTerm" style="display: block; margin: 10px 0; padding: 8px; width: 100%; max-width: 500px; border-radius: 4px; border: 1px solid #ccc;">
+            <option value="30">30 Years</option>
+            <option value="20">20 Years</option>
+            <option value="15">15 Years</option>
+          </select>
+
+          <!-- Debt-to-Income Ratio -->
+          <label for="dtiRatio" style="font-weight: bold; margin-top: 15px;">Maximum DTI Ratio (%)</label>
+          <input type="number" id="dtiRatio" placeholder="e.g., 43" min="1" max="60" step="1" value="43">
+
+          <!-- Other Monthly Debts -->
+          <label for="monthlyDebts" style="font-weight: bold; margin-top: 15px;">Other Monthly Debts ($)</label>
+          <input type="number" id="monthlyDebts" placeholder="e.g., 500 (car loans, credit cards, etc.)" min="0" step="50" value="0">
+
+          <!-- Calculate Button -->
+          <button onclick="calculateAffordability()" style="margin-top: 20px;">Calculate Home Affordability</button>
+
+          <!-- Results Section -->
+          <div id="results" style="margin-top: 20px; padding: 20px; background: #f0f8ff; border-radius: 8px; display: none;">
+            <h4 style="color: #121f3d; margin-top: 0;">Your Results</h4>
+            <div id="resultsContent"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Information Card -->
+      <div class="tool-card">
+        <h3>ℹ️ How It Works</h3>
+        <div class="tool-content">
+          <h4>Crypto Asset Depletion Method</h4>
+          <p>This calculation method is used by mortgage lenders to qualify borrowers who have cryptocurrency assets:</p>
+          <ol style="line-height: 1.8;">
+            <li><strong>50% Haircut:</strong> Your crypto value is reduced by 50% to account for volatility</li>
+            <li><strong>84-Month Depletion:</strong> The remaining value is divided by 84 months (7 years)</li>
+            <li><strong>Qualifying Income:</strong> This monthly amount counts as income for mortgage qualification</li>
+            <li><strong>Affordability:</strong> Combined with your other income, we calculate how much home you can afford based on DTI limits</li>
+          </ol>
+
+          <h4>MSA Cost Levels</h4>
+          <ul style="line-height: 1.8;">
+            <li><strong>High Cost:</strong> Property taxes ~1.5-2%, insurance ~$150-250/month</li>
+            <li><strong>Medium Cost:</strong> Property taxes ~1-1.5%, insurance ~$100-150/month</li>
+            <li><strong>Low Cost:</strong> Property taxes ~0.5-1%, insurance ~$75-100/month</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Other SeraphAi Tools -->
+      <div class="tool-card">
+        <h3>🛠️ Other SeraphAi Tools</h3>
+        <div class="tool-content">
+          <ul style="line-height: 2;">
+            <li>✅ Lead Scoring</li>
+            <li>📄 Document AI (W-2, FNMA 3.2, MISMO)</li>
+            <li>🧠 Underwriting Assistant</li>
+            <li>⚙️ RPA Automation Workflow</li>
+            <li>🔍 Compliance Checker</li>
+            <li>💬 Chatbot Assistant</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2025 SeraphAi. All rights reserved.</p>
+      <p style="font-size: 12px; margin-top: 10px;">Calculations are estimates only. Actual mortgage terms may vary. Consult with a licensed mortgage professional.</p>
+    </div>
+  </div>
+
+  <script src="crypto-calculator.js"></script>
 </body>
 </html>
